@@ -132,4 +132,4 @@ class Likes(models.Model):
             self.save()
 
     def __str__(self):
-        return self.user_like
+        return self.user_liked
