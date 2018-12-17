@@ -64,3 +64,12 @@ class Image(models.Model):
     posted_on = models.DateTimeField(auto_now_add=True)
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE, null='True')
+
+    def __str__(self):
+      return self.name
+
+    class Meta:
+    ordering = ['posted_on']
+
+    def save_image(self):
+    self.save()
