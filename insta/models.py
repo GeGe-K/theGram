@@ -101,15 +101,35 @@ class Comment(models.Model):
     image = models.ForeignKey(Image, on_delete=models.CASCADE, related_name='comments')
     user = models.ForeignKey(User, on_delete=models.CASCADE, null='True')
 
+    # def __str__(self):
+    #   return self.name
+
+    # class Meta:
+    #     ordering = ['posted_on']
+
+    # def save_comment(self):
+    #     self.save()
+
+    # def delete_comment(self):
+    #     self.delete()
+
+    # @classmethod
+    # def get_comments_on_image(cls, id):
+    #     the_comments = Comment.objects.filter(image__pk=id)
+    #     return comments
+
     def __str__(self):
-      return self.name
+        return self.comment
 
-    class Meta:
-        ordering = ['posted_on']
 
-    def save_comment(self):
-        self.save()
+class Likes(models.Model):
+    user_liked = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name='likes')
+    liked_post = models.ForeignKey(
+        Image, on_delete=models.CASCADE, related_name='likes')
 
-    def delete_comment(self):
-        self.delete()
+    def save_like(self):
+            self.save()
 
+    def __str__(self):
+        return self.user_like
