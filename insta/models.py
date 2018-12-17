@@ -33,7 +33,15 @@ class Profile(models.Model):
     @receiver(post_save, sender=User)
     def save_user_profile(sender, instance, **kwargs):
         instance.profile.save()
-        
+
+    post_save.connect(save_user_profile, sender=User)
+
+    def save_profile(self):
+        self.save()
+
+    def del_profile(self):
+        self.delete()
+
 
 
 # class Image(models.Model):
