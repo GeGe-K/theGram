@@ -84,3 +84,8 @@ class Image(models.Model):
     def get_images_on_profile(cls,profile):
       images = Image.objects.filter(profile__pk = profile)
       return images
+
+    @property
+    def count_comments(self):
+      comments = self.comments.count()
+      return comments
