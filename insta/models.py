@@ -79,3 +79,8 @@ class Image(models.Model):
 
     def update_caption(self):
     self.update()
+
+    @classmethod
+    def get_images_on_profile(cls,profile):
+      images = Image.objects.filter(profile__pk = profile)
+      return images
