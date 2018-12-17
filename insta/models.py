@@ -8,6 +8,11 @@ from tinymce.models import HTMLField
 
 # Create your models here.
 class Profile(models.Model):
+
+    '''
+    Class contains user details.
+    '''
+
   user = models.OneToOneField(User, on_delete=models.CASCADE)
   bio = HTMLField()
   website = models.CharField(max_length=30, blank=True)
@@ -19,6 +24,12 @@ class Profile(models.Model):
       'Profile', related_name='following_profile', blank=True)
   profile_pic = models.ImageField(
       upload_to='profile_pic/', null=True, blank=True)
+
+    @receiver(post_save, sender=User)
+    def create_user_profile(sender, instance, created **kwargs):
+        if created:
+            Profile.objects.create(user=instance)
+    
 
 
 # class Image(models.Model):
