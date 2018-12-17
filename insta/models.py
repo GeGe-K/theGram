@@ -69,16 +69,16 @@ class Image(models.Model):
       return self.name
 
     class Meta:
-    ordering = ['posted_on']
+        ordering = ['posted_on']
 
     def save_image(self):
-    self.save()
+        self.save()
 
     def delete_image(self):
-    self.delete()
+        self.delete()
 
     def update_caption(self):
-    self.update()
+        self.update()
 
     @classmethod
     def get_images_on_profile(cls,profile):
