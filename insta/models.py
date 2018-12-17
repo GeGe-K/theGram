@@ -89,3 +89,8 @@ class Image(models.Model):
     def count_comments(self):
       comments = self.comments.count()
       return comments
+
+    @property
+    def count_likes(self):
+      likes = self.likes.count()
+      return like
