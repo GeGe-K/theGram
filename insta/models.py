@@ -94,3 +94,22 @@ class Image(models.Model):
     def count_likes(self):
       likes = self.likes.count()
       return like
+
+class Comment(models.Model):
+    comment = HTMLField()
+    posted_on = models.DateTimeField(auto_now_add=True)
+    image = models.ForeignKey(Image, on_delete=models.CASCADE, related_name='comments')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null='True')
+
+    def __str__(self):
+      return self.name
+
+    class Meta:
+        ordering = ['posted_on']
+
+    def save_comment(self):
+        self.save()
+
+    def delete_comment(self):
+        self.delete()
+
