@@ -1,7 +1,7 @@
-# The showCase
+# The Gram
 
 ## Author
-### *Gloria Givondo* (10/12/2018)
+### *Gloria Givondo* (14/12/2018)
 
 ## Description 
 
