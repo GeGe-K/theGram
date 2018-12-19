@@ -22,7 +22,7 @@ As a user, I would like to:
 ## Setup / Installation Requirements
 * Web browser
 * Virtual environment
-* Flask
+* Django
 * Python version 3.6
 
 
