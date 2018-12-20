@@ -1,4 +1,4 @@
-{%extends "registration/base.html"%}
+{%extends "registration/base.html" %}
 {% load bootstrap4 %}
 {% load static %}
 
@@ -14,9 +14,6 @@
         {% if form.errors %}
         <p> Password or Username is incorrect </p>
         {% endif %}
-        <div class="photos ">
-            <img src="/static/photos/phone.jpg" class="img-responsive" id="phone" alt="">
-        </div>
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 alpha">
                 <h3 class="text-center title">Instagram</h3>
 
@@ -37,19 +34,10 @@
                     <button type="submit" class="btn btn-primary">Sign up</button>
                 </form>
 
-
-
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 alpha">
-                    <p class="have">Have an account? <a href="/accounts/login">Log in</a> </p>
-                <div class="bottom">
-                    <p class="have">Get the app.</p>
-                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 download">
-                        <img src="/static/photos/playstore.png" class="img-responsive" alt="" id="images">
-                    </div>
-                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 download">
-                        <img src="/static/photos/appstore.png" class="img-responsive" alt="" id="images">
-                    </div>
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                    <p class="have">Have an account? <a href="/accounts/login">Login</a> </p>
+                   
                 </div>
             </div>
 

@@ -1,0 +1,58 @@
+{%extends "registration/base.html" %}
+{% load bootstrap4 %}
+{% load static %}
+
+{% block styles %}
+{{block.super}}
+<link rel="stylesheet" href="{% static 'css/signup.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        {% if form.errors %}
+        <div class="col-md-4 ">
+            <p> Password or Username is incorrect </p>
+            {% endif %}
+            <div class="photos ">
+                <img src="/static/photos/phone.jpg" class="img-responsive" id="phone" alt="">
+            </div>
+            <div class="card mx-auto mt-4 p-3 ml-4"id="login">
+                <h3 class="text-center title">Instagram</h3>
+
+                <form action="/accounts/login/" method="post">
+                    {% csrf_token %}
+                    {% for field in form %}
+                    <p>
+                        {{ field.label_tag }}<br>
+                        {{ field }}
+                        {% if field.help_text %}
+                        <small style="display: none">{{ field.help_text }}</small>
+                        {% endif %}
+                        {% for error in field.errors %}
+                        <p style="color: red">{{ error }}</p>
+                        {% endfor %}
+                    </p>
+                    {% endfor %}
+                    <button type="submit" class="btn btn-primary btn-sm">Login</button>
+                </form>
+                <br>
+                <div>
+                    <p>Don't have an account? <a class="card-link" href="/accounts/register">Signup</a> </p>
+                    <div class="bottom">
+                        <p class="text-center">Get the app.</p>
+                    </div>
+                </div>
+                <div class=" download">
+                    <img src="/static/photos/playstore.png" class="img-responsive" alt="" width="200">
+                </div>
+                <br>
+                <div class=" download">
+                    <img src="/static/photos/appstore.png" class="img-responsive" alt="" width="200">
+                </div>
+            </div>
+        </div>
+    </div>         
+</div>
+
+{% endblock %}

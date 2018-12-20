@@ -1,0 +1,39 @@
+{% extends 'base.html' %} {% block content %} {% load bootstrap4 %}
+{{ block.super }}
+<div class="container">
+  <div class="row">
+    {% for image in images %}
+    <div class="col-sm-7 mx-auto mb-5">
+      <div class="card">
+        <div class="card-header bg-white">
+          <img
+            src="{{ image.user.profile.profile_pic.url }}"
+            alt=""
+            style="width:40px;height: 40px;border-radius: 50%"
+          /><p class="card-text">{{ image.user.username }}</p>
+        </div>
+        <img src="{{ image.image.url }}" class="card-img-top" alt="Image" />
+        <div class="card-body">
+            <div id="likes">
+              <button onclick="like('{{image.id}}')"><i class="fa fa-heart"></i></button>
+              <strong><span id="likespan{{image.id}}">{{image.count_likes}}</span></strong>
+            </div>
+        <form action="{% url 'index' %}" method="post">
+            {% csrf_token%}
+            <input type="hidden" name="idhey" style="position:relative;left:10px" value='{{image.id}}'>
+            {% bootstrap_form form %}
+            <div class="form-group">
+                <button type="submit" class="btn btn-sucess btn-sm">Comment</button>
+            </div>
+        </form>
+          {% for comment in image.comments.all%} {% autoescape on%}
+          <p>{{ comment.comment | safe }}</p>
+          {% endautoescape%} {% endfor %}
+        </div>
+
+      </div>
+    </div>
+    {%endfor%}
+  </div>
+</div>
+{% endblock %}

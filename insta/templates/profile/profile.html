@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{%load static%}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <!-- displaying Username -->
+        <div class="col-md-6">
+            <div id="profile">
+                <h3> {{user.username }} </h3>
+                
+                <!--Displaying user info-->
+                {% if user.profile.bio %}
+                {% autoescape on%}
+                <p> {{user.profile.bio | safe}} </p>
+                {% endautoescape%}
+                {% else %}
+                <p> {{user.username}} has no bio </p>
+                {% endif %}
+                
+                <!--Display profile photo-->
+                {% if user.profile_pic %}
+                
+                <img style="border: 1px black solid" src="{{user.profile_pic.url_}}" alt="picture" class="img-thumbnail">
+                {% endif %}
+
+                <!-- Displaying posts -->
+                {% if user.posts %}
+                <h3>No of posts: {{user.posts.all.count}}</h3>
+                {%endif%}
+                {%if user.followers%}
+                <h3>Followers: {{user.followers.all.count}}</h3>
+                {%endif%}
+                {%if user.following%}
+                <h3>Following: {{user.posts.all.count}}</h3>
+                {%endif%}
+            </div>
+        </div>
+    </div>
+</div>
+{%endblock%}

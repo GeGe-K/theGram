@@ -14,6 +14,7 @@ class Profile(models.Model):
     '''
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    name = models.TextField(default='my name')
     bio = HTMLField()
     website = models.CharField(max_length=30, blank=True)
     phone_number = models.IntegerField(blank=True, null=True)
@@ -63,7 +64,8 @@ class Image(models.Model):
     caption = HTMLField()
     posted_on = models.DateTimeField(auto_now_add=True)
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null='True')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null='false', related_name='posts')
+   
 
     def __str__(self):
       return self.name
@@ -93,30 +95,33 @@ class Image(models.Model):
     @property
     def count_likes(self):
       likes = self.likes.count()
-      return like
+
+    def like(self, photo):
+        if self.mylikes.filter(photo=photo).count() == 0:
+            Likes(photo=photo, user=self).save()
 
 class Comment(models.Model):
-    comment = HTMLField()
+    comment = models.CharField(max_length=255)
     posted_on = models.DateTimeField(auto_now_add=True)
     image = models.ForeignKey(Image, on_delete=models.CASCADE, related_name='comments')
     user = models.ForeignKey(User, on_delete=models.CASCADE, null='True')
 
-    # def __str__(self):
-    #   return self.name
+    def __str__(self):
+      return self.name
 
-    # class Meta:
-    #     ordering = ['posted_on']
+    class Meta:
+        ordering = ['posted_on']
 
-    # def save_comment(self):
-    #     self.save()
+    def save_comment(self):
+        self.save()
 
-    # def delete_comment(self):
-    #     self.delete()
+    def delete_comment(self):
+        self.delete()
 
-    # @classmethod
-    # def get_comments_on_image(cls, id):
-    #     the_comments = Comment.objects.filter(image__pk=id)
-    #     return comments
+    @classmethod
+    def get_comments_on_image(cls, id):
+        the_comments = Comment.objects.filter(image__pk=id)
+        return comments
 
     def __str__(self):
         return self.comment
