@@ -1,1 +1,1 @@
-web: gunicorn Ig.wsgi
+web: gunicorn ig.wsgi
