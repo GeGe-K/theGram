@@ -7,7 +7,7 @@
 
 A clone of the popular app Instagram.
 
-You can view the live link on: https://.herokuapp.com/
+You can view the live link on: https://my-gram5.herokuapp.com/
 
 ## User Stories
 These are the behaviours that the application implenents for use by a user.
