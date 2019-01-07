@@ -1,47 +1,28 @@
-{%extends "registration/base.html" %}
+{% extends 'registration/base.html' %}
 {% load bootstrap4 %}
-{% load static %}
-
-{% block styles %}
-{{block.super}}
-<link rel="stylesheet" href="{% static 'css/signup.css' %}">
-{% endblock %}
-
 {% block content %}
 <div class="container">
-    <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4"></div>
-    <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
-        {% if form.errors %}
-        <p> Password or Username is incorrect </p>
-        {% endif %}
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 alpha">
-                <h3 class="text-center title">Instagram</h3>
-
-                <form action="/accounts/register/" method="post">
-                    {% csrf_token %}
-                    {% for field in form %}
-                    <p>
-                        {{ field.label_tag }}<br>
-                        {{ field }}
-                        {% if field.help_text %}
-                        <small style="display: none">{{ field.help_text }}</small>
-                        {% endif %}
-                        {% for error in field.errors %}
-                        <p style="color: red">{{ error }}</p>
-                        {% endfor %}
-                    </p>
+    <div class="card my-5 w-25 mx-auto text-center" id=register>
+        <div class="card-body">
+            <img src="/static/photos/gram.png" class="img-fluid" id="head" alt="Instagram">
+            <form method="post">
+                {% csrf_token %}
+                {% for field in form %}
+                <p>
+                    {{ field.label_tag }}<br>
+                    {{ field }}
+                    {% if field.help_text %}
+                    <small style="display: none">{{ field.help_text }}</small>
+                    {% endif %}
+                    {% for error in field.errors %}
+                    <p style="color: red">{{ error }}</p>
                     {% endfor %}
-                    <button type="submit" class="btn btn-primary">Sign up</button>
-                </form>
-
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                    <p class="have">Have an account? <a href="/accounts/login">Login</a> </p>
-                   
-                </div>
-            </div>
-
+                </p>
+                {% endfor %}
+                <button type="submit" class="btn btn-primary btn-sm">Register</button>
+            </form>
+            <p>Have an account? <a href="/accounts/login">Log in</a></p>
         </div>
-        <div class="col-md-4"></div>
+    </div>
 </div>
 {% endblock %}

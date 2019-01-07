@@ -134,7 +134,7 @@ class Likes(models.Model):
         Image, on_delete=models.CASCADE, related_name='likes')
 
     def save_like(self):
-            self.save()
+        self.save()
 
     def __str__(self):
         return self.user_liked

@@ -1,0 +1,11 @@
+#profile{
+    position: static;
+    border: 1px solid black;
+    width: 25%;
+    padding: 30px;
+    margin-top: 10px;
+    margin-bottom: 50px;
+    margin-left: 5%;
+    background: white;
+    box-shadow: -1px 1px 16px -1px rgba(0,0,0,0.75);
+}

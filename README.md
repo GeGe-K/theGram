@@ -30,7 +30,7 @@ As a user, I would like to:
 * In your terminal run:
 
         $ git clone https://github.com/GeGe-K/theGram.git
-        $ cd theGram
+        $theGram cd theGram
 
 ## Running the Application 
 * Create the virtual environment
@@ -82,7 +82,7 @@ As a user, I would like to:
 ## Technologies Used
 * Virtual environment
 * Python version 3.6.7(Django framework)
-* Bootstrap4 & 3
+* Bootstrap4
 * Postgresql
 * HTML5
 * CSS

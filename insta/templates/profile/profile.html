@@ -8,7 +8,6 @@
         <div class="col-md-6">
             <div id="profile">
                 <h3> {{user.username }} </h3>
-                
                 <!--Displaying user info-->
                 {% if user.profile.bio %}
                 {% autoescape on%}
@@ -17,12 +16,15 @@
                 {% else %}
                 <p> {{user.username}} has no bio </p>
                 {% endif %}
-                
+    
                 <!--Display profile photo-->
                 {% if user.profile_pic %}
                 
                 <img style="border: 1px black solid" src="{{user.profile_pic.url_}}" alt="picture" class="img-thumbnail">
                 {% endif %}
+
+                
+
 
                 <!-- Displaying posts -->
                 {% if user.posts %}
@@ -35,7 +37,24 @@
                 <h3>Following: {{user.posts.all.count}}</h3>
                 {%endif%}
             </div>
+            <!-- Posts -->
+            <div id="post">
+                <h3 class="text-center my-5">Posts</h3>
+                {% if post in posts%}
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-header bg-white">
+                                <img src="{{ image.user.profile.profile_pic.url }}" alt="" style="width:40px;height: 40px;border-radius: 50%" />
+                                <p class="card-text">{{ image.user.username }}</p>
+                            </div>
+                            <img src="{{ image.image.url }}" class="card-img-top" alt="Image" />
+                        </div>
+                        {% else %}
+                        <p class="card-text">No posts found</p>
+                    </div>
+                {% endif %}
+            </div>
         </div>
     </div>
-</div>
+</div>    
 {%endblock%}
