@@ -71,7 +71,7 @@ class Image(models.Model):
       return self.name
 
     class Meta:
-        ordering = ['posted_on']
+        ordering = ['-posted_on']
 
     def save_image(self):
         self.save()
@@ -110,7 +110,7 @@ class Comment(models.Model):
       return self.name
 
     class Meta:
-        ordering = ['posted_on']
+        ordering = ['-posted_on']
 
     def save_comment(self):
         self.save()

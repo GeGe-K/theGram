@@ -14,6 +14,9 @@
         </div>
         <img src="{{ image.image.url }}" class="card-img-top" alt="Image" />
         <div class="card-body">
+          {% autoescape on%}
+          <p class="card-text">{{image.caption | safe}}</p>
+          {% endautoescape%}
             <div id="likes">
               <button onclick="like('{{image.id}}')"><i class="fa fa-heart"></i></button>
               <strong><span id="likespan{{image.id}}">{{image.count_likes}}</span></strong>

@@ -11,7 +11,7 @@ urlpatterns=[
     url(r'^like/(?P<image_id>\d+)', views.like, name='like'),
     url(r'^accounts/profile/', views.profile, name='profile'),
     url(r'^profile/(\d+)$', views.user_profile, name='user_profile'),
-    url(r'^updateprofile/(?P<id>\d+)', views.update_profile, name='updateprofile'),
+    url(r'^updateprofile/(?P<id>\d+)', views.update_profile, name='update_profile'),
     url(r'^like/(?P<image_id>\d+)$', views.like, name='like'),
     url(r'^unlike/(?P<image_id>\d+)$', views.unlike, name='unlike')
 ]

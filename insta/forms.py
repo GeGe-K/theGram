@@ -21,7 +21,7 @@ class ProfileForm(forms.ModelForm):
 class ImageForm(forms.ModelForm):
   class Meta:
     model = Image
-    fields = ('name', 'image')
+    fields = ('name', 'caption','image')
 
 
 class CommentForm(forms.ModelForm):
