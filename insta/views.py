@@ -80,8 +80,10 @@ def profile(request):
 
     profile = Profile.objects.get(user=user)
 
+    posts = Image.objects.filter(user=user)
+
     title = f"{user.username}"
-    return render(request, 'profile/profile.html', {"title": title, "user": user, "profile": profile})
+    return render(request, 'profile/profile.html', {"title": title, "user": user, "profile": profile, "posts":posts})
 
 
 @login_required(login_url='/accounts/login/')
@@ -97,7 +99,7 @@ def user_profile(request,id):
     return render(request, 'profile/profile.html', {"title": title, "user": user, "profile": profile})
 
 @login_required(login_url='/accounts/login/')
-def update_profile(request,username):
+def update_profile(request,id):
     """
     Function that enables one to edit their profile information
     """
@@ -110,8 +112,8 @@ def update_profile(request,username):
             profile.save()
         return redirect('home')
     else:
-        form = ProfileForm()
-    return render(request, 'profile/update_profile.html', {"form": form, })
+        form = ProfileForm(instance=profile)
+    return render(request, 'profile/update_profile.html', {"form": form })
 
 
 def followers(request, username):

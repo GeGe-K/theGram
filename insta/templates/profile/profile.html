@@ -23,7 +23,7 @@
                 {% else %}
                 <p> {{user.username}} has no bio </p>
                 {% endif %}
-                <p><a href="{% url 'updateprofile' %}">Edit profile</a></p>
+                <p><a href="{% url 'update_profile'  request.user.id %}">Edit profile</a></p>
                 <p><a href="{% url 'new_image'%}">New post</a></p>
                 
             </div>
@@ -40,21 +40,23 @@
                 {%endif%}
             </div>
             <!-- Posts -->
-            <!-- <div id="post">
+            <div id="post">
                 <h3 class="text-center my-5">Posts</h3>
                 {% for post in posts%}
                     <div class="card">
-                        <div class="card-body">
-                            <div class="card-header bg-white">
-                                <img src="{{ image.user.profile.profile_pic.url }}" alt="" style="width:40px;height: 40px;border-radius: 50%">
-                                <p class="card-text">{{ image.user.username }}</p>
-                            </div>
-                            <img src="{{ image.image.url }}" class="card-img-top" alt="Image">
+                        <div class="card-header bg-white">
+                            <img src="{{ post.user.profile.profile_pic.url }}" alt="" style="width:40px;height: 40px;border-radius: 50%">
+                            <p class="card-text">{{ post.user.username }}</p>
                         </div>
-
+                        <img src="{{ post.image.url }}" class="card-img-top" alt="Image">
+                        <div class="card-body"></div>
+                            {% autoescape on%}
+                            <p class="card-text">{{post.image.caption | safe}}</p>
+                            {% endautoescape%}
+                        </div>
                     </div>
-                {% endfor %} -->
-            <!-- </div> -->
+                {% endfor %}
+            </div>
         </div>
     </div>
 </div>    

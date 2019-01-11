@@ -29,9 +29,11 @@
                 <button type="submit" class="btn btn-sucess btn-sm">Comment</button>
             </div>
         </form>
-          {% for comment in image.comments.all%} {% autoescape on%}
+          {% for comment in image.comments.all%}
+          {% autoescape on%}
           <p>{{ comment.comment | safe }}</p>
-          {% endautoescape%} {% endfor %}
+          {% endautoescape%} 
+          {% endfor %}
         </div>
 
       </div>
