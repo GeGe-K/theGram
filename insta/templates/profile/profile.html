@@ -1,6 +1,6 @@
 {% extends 'profile/base.html' %}
 {%load static%}
-
+{{ block.super }}
 {% block content %}
 <div class="container">
     <div class="row">
@@ -9,12 +9,9 @@
             <div id="profile">
                 <h3> {{user.username }} </h3>
                 <!--Display profile photo-->
-                {% if user.profile_pic %}
-                
-                <img style="border: 1px black solid" src="{{user.profile_pic.url_}}" alt="picture" class="img-thumbnail">
-                {% else %}
-                <img src="/media/profile_pic/default.jpeg" alt="" style="width:70px;height: 70px;border-radius: 50%" >
-                {% endif %}
+                {% for user.profile_pic %}
+                    <img style="border: 1px black solid" src="{{user.profile_pic.url_}}" alt="picture" class="img-thumbnail">
+                {% endfor %}
                 <!--Displaying user info-->
                 {% if user.profile.bio %}
                 {% autoescape on%}
@@ -23,9 +20,10 @@
                 {% else %}
                 <p> {{user.username}} has no bio </p>
                 {% endif %}
-                <p><a href="{% url 'update_profile'  request.user.id %}">Edit profile</a></p>
-                <p><a href="{% url 'new_image'%}">New post</a></p>
-                
+                <div class="row">
+                    <p class="col-md-6"><a href="{% url 'update_profile'  request.user.id %}">Edit profile</a></p>
+                    <p class="col-md-6"><a href="{% url 'new_image'%}">New post</a></p>
+                </div>
             </div>
             <div>
                 <!-- Displaying posts -->
