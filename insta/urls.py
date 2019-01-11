@@ -4,7 +4,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns=[
-    url('^$', views.index, name='index'),
+    url(r'^$', views.index, name='index'),
     url(r'^image/$', views.new_image, name='new_image'),
     url(r'^search/$', views.search_user, name='search_profile'),
     url(r'^addcomment/(?P<image_id>\d+)', views.add_comment, name='addcomment'),
